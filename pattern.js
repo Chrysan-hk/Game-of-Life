@@ -1,0 +1,6 @@
+const patterns = object.freeze (
+`.O.....
+...O...
+OO..OOO`
+) 
+// 變成座標,然後話去知.系無life,0系有life

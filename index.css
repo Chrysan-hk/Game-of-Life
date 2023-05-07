@@ -1,0 +1,13 @@
+.sliderContainer {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.sliderText {
+padding-right: 10px;
+}
+
+.sliderSpace {
+    padding-right: 10px;
+}

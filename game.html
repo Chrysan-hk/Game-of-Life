@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <mLoneliness Leveleta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Game of Life for Chrysan</title>
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous"
+    >
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <h1>Game of Life</h1>
+
+    <button class="keyboard">Keyboard</button>
+    <button class="style">Theme Style</button>
+
+    <div class="sliderContainer">
+
+    <div class="sliderText">Speed</div>
+    <div class="sliderSpace"><input type="range" min="1" max="60" value="30" class="slider" id="speed">
+    <span id="speedValue"></span></div>
+  
+    <div class="sliderText">Loneliness Level</div>
+    <div class="sliderSpace"><input type="range" min="1" max="7" value="2" class="slider" id="loneliness">
+      <span id="lonelinessValue"></span></div>
+
+      <div class="sliderText">Reproduction Level</div>
+   <div class="sliderSpace"> <input type="range" min="1" max="7" value="3" class="slider" id="reproduction">
+  <span id="reproductionValue"></span></div>
+
+  <div class="sliderText">Overpopulation Level</div>
+    <div class="sliderSpace"><input type="range" min="1" max="7" value="3" class="slider" id="overpopulation">
+    <span id="overpopulationValue"></span></div>
+
+</div>
+    
+
+    <div id="canvas"></div>
+    
+    <button class="startDrawing">Drawing Mode</button>
+    <button class="rubber">Rubber</button>
+    <button class="startMoving">Start Moving</button>
+    <button class="stop">Stop</button>
+    <button class="selectPattern">Select Pattern</button>
+    <button class="randomOn">Random</button>
+    <button class="randomColour">Random Single Colour</button>
+    <button class="fancy">Fancy Colour</button>
+    <button class="resetGame">Reset</button>
+
+    
+
+    <script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous">
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>
