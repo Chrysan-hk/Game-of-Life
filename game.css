@@ -1,0 +1,32 @@
+body {
+margin-left: 50px;
+margin-right: 130px;
+}
+.sliderContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(188, 186, 198, 0.855);
+}
+.sliderText {
+padding-right: 10px;
+}
+.sliderSpace {
+    padding-right: 10px;
+}
+.background {
+    background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/154beb65838927.5b0279a21ff61.gif'); 
+    background-position:center; 
+    background-size: cover;
+    overflow: hidden;
+}
+h1 {
+    font-size: 30px;
+    padding: 10px;
+    margin-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.802);
+    color: white;
+}

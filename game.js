@@ -1,12 +1,12 @@
 const unitLength = 20;
 let boxColor = 150;
-const strokeColor = 200; //bigger num for lighter color
+let strokeColor = 200; 
 let columns;
 let rows;
-let currentBoard;//this generation
-let nextBoard;//next generation, base on currentBoard
+let currentBoard;
+let nextBoard;
 
-let startGame = true
+let startGame = true;
 let reset = document.querySelector(".resetGame")
 let randomOn = document.querySelector(".randomOn")
 let stopScreen = document.querySelector(".stop")
@@ -21,18 +21,30 @@ let reproduction = document.querySelector("#reproduction")
 let overpopulation = document.querySelector("#overpopulation")
 let fancyColor = document.querySelector(".fancy")
 let normalColorMode = true
+let sel;
+let helloween = document.querySelector("#helloween")
+let christmas = document.querySelector("#christmas")
+let helloweenMode = false
+let christmasMode = false
+let glasses = document.querySelector("#glasses")
+let grayCounter = document.querySelector("#grayCounter")
+let simkingGliderGun = document.querySelector("#simkingGliderGun")
+
+
+
+
 
 function setup() {
-    const canvas = createCanvas(windowWidth - 80, windowHeight - 100);
+    const canvas = createCanvas(windowWidth - 180, windowHeight - 150);
     canvas.parent(document.querySelector("#canvas"));
 
-    columns = floor(width / unitLength);//=Math.floor
+    columns = floor(width / unitLength);
     rows = floor(height / unitLength);
 
-    currentBoard = [];//save the life of the cell, like tick-tac-tow
+    currentBoard = [];
     nextBoard = [];
     for (let i = 0; i < columns; i++) {
-        currentBoard[i] = [];// ceate i-numbers of arrays and put into currentBoard, e.g i within 5
+        currentBoard[i] = [];
         nextBoard[i] = [];
     }
     initBoard();
@@ -54,6 +66,10 @@ function fillColorToBox() {
             if (currentBoard[i][j] == 1) {
                 if (normalColorMode) {
                     fill(boxColor);
+                } else if (helloweenMode){
+                    fill(255,165,0)
+                } else if (christmasMode){
+                    fill(0,100,0)
                 } else {
                     let fancyColourArray = [
                         Math.floor(Math.random() * 256),
@@ -64,7 +80,13 @@ function fillColorToBox() {
                     fill(fancyColor)
                 }
             } else {
-                fill(255);
+                if (helloweenMode){
+                    fill(1)
+                } else if (christmasMode){
+                    fill(139,0,0)
+                } else {
+                    fill(255)
+            };
             }
             stroke(strokeColor);
             rect(i * unitLength, j * unitLength, unitLength, unitLength);
@@ -119,21 +141,29 @@ function mouseDragged() {
     const y = floor(mouseY / unitLength);
     if (drawingMode) {
         currentBoard[x][y] = 1;
-        fill(boxColor)
+        if(helloweenMode){
+            fill(255,165,0)
+        }else if(christmasMode){
+            fill(0,100,0)
+        }else{
+            fill(boxColor);
+        }
     } else {
         currentBoard[x][y] = 0;
         fill('rgb(255,255,255)');
     }
     stroke(strokeColor);
     rect(x * unitLength, y * unitLength, unitLength, unitLength);
-
 }
 
 // OK Reset 
 reset.addEventListener("click", function () {
     boxColor = 150
+    strokeColor = 200
     drawingMode = false
     normalColorMode = true
+    helloweenMode = false
+    christmasMode = false
     initBoard();
 });
 
@@ -179,7 +209,7 @@ startMoving.addEventListener("click", function () {
     loop();
 })
 
-// OK Start Drawing
+// OK Drawing Mode
 startDrawing.addEventListener("click", function () {
     drawingMode = true
     noLoop()
@@ -207,9 +237,71 @@ rubber.addEventListener("click", function () {
 // OK fancyColor
 fancyColor.addEventListener("click", function () {
     normalColorMode = false
+
 })
 
 // OK resize
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
+
+// OK Theme Style
+helloween.addEventListener("click", function () {
+    strokeColor = 1  
+    normalColorMode = false
+    helloweenMode = true
+})
+
+christmas.addEventListener("click", function () {
+    strokeColor = `rgb(139,0,0)`
+    normalColorMode = false
+    helloweenMode = false
+    christmasMode = true
+})
+
+// Select Pattern
+glasses.addEventListener("click", function (){
+    const pattern = patternlist["glasses"].split("\n");
+    console.log(pattern)
+    let startX = Math.floor(columns/2);
+    let startY = Math.floor(rows/2);
+    for (let row = 0; row < pattern.length; row++) {
+      for (let col = 0; col < pattern[row].length; col++) {
+        console.log(row, col, pattern[row][col]);
+        currentBoard[startX + col][startY + row] = +(pattern[row][col] === "O");
+      }
+    }
+    fillColorToBox()
+    noLoop()
+})
+
+grayCounter.addEventListener("click", function (){
+    const pattern = patternlist["grayCounter"].split("\n");
+    console.log(pattern)
+    let startX = Math.floor(columns/2);
+    let startY = Math.floor(rows/2);
+    for (let row = 0; row < pattern.length; row++) {
+      for (let col = 0; col < pattern[row].length; col++) {
+        console.log(row, col, pattern[row][col]);
+        currentBoard[startX + col][startY + row] = +(pattern[row][col] === "O");
+      }
+    }
+    fillColorToBox()
+    noLoop()
+})
+
+simkingGliderGun.addEventListener("click", function (){
+    const pattern = patternlist["simkingGliderGun"].split("\n");
+    console.log(pattern)
+    let startX = Math.floor(columns/4);
+    let startY = Math.floor(rows/4);
+    for (let row = 0; row < pattern.length; row++) {
+      for (let col = 0; col < pattern[row].length; col++) {
+        console.log(row, col, pattern[row][col]);
+        currentBoard[startX + col][startY + row] = +(pattern[row][col] === "O");
+      }
+    }
+    fillColorToBox()
+    noLoop()
+})
+

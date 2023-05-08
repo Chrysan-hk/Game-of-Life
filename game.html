@@ -13,14 +13,12 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
         crossorigin="anonymous"
     >
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="game.css" />
 </head>
 
-<body>
+<body class="background">
     <h1>Game of Life</h1>
 
-    <button class="keyboard">Keyboard</button>
-    <button class="style">Theme Style</button>
 
     <div class="sliderContainer">
 
@@ -32,29 +30,53 @@
     <div class="sliderSpace"><input type="range" min="1" max="7" value="2" class="slider" id="loneliness">
       <span id="lonelinessValue"></span></div>
 
-      <div class="sliderText">Reproduction Level</div>
-   <div class="sliderSpace"> <input type="range" min="1" max="7" value="3" class="slider" id="reproduction">
-  <span id="reproductionValue"></span></div>
+    <div class="sliderText">Reproduction Level</div>
+    <div class="sliderSpace"> <input type="range" min="1" max="7" value="3" class="slider" id="reproduction">
+     <span id="reproductionValue"></span></div>
 
-  <div class="sliderText">Overpopulation Level</div>
+    <div class="sliderText">Overpopulation Level</div>
     <div class="sliderSpace"><input type="range" min="1" max="7" value="3" class="slider" id="overpopulation">
-    <span id="overpopulationValue"></span></div>
+     <span id="overpopulationValue"></span></div>
 
+     <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Select Pattern
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" id="glasses">Glasses</a></li>
+            <li><a class="dropdown-item" id="grayCounter">Gray Counter</a></li>
+            <li><a class="dropdown-item" id="simkingGliderGun">Simking Glider Gun</a></li>
+        </ul>
+    </div>
+    <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Theme Style
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" id="helloween">Helloween</a></li>
+            <li><a class="dropdown-item" id="christmas">Christmas</a></li>
+        </ul>
+    </div>
 </div>
-    
 
     <div id="canvas"></div>
-    
+ 
     <button class="startDrawing">Drawing Mode</button>
     <button class="rubber">Rubber</button>
     <button class="startMoving">Start Moving</button>
-    <button class="stop">Stop</button>
-    <button class="selectPattern">Select Pattern</button>
+    <button class="stop">Stop Moving</button>
     <button class="randomOn">Random</button>
     <button class="randomColour">Random Single Colour</button>
     <button class="fancy">Fancy Colour</button>
     <button class="resetGame">Reset</button>
 
+    
+ 
+    
+
+    
     
 
     <script 
@@ -64,7 +86,9 @@
     </script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <script src="pattern.js"></script>
     <script src="game.js"></script>
+
 </body>
 
 </html>
